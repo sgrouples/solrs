@@ -12,7 +12,7 @@ scmInfo := Some(ScmInfo(url("https://github.com/inoio/solrs"), "git@github.com:i
 
 licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.8"
 
 crossScalaVersions := Seq("2.11.12", "2.12.8")
 
@@ -26,11 +26,11 @@ scalacOptions ++= Seq(
   "-language:postfixOps"
 )
 
-javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
+javacOptions ++= Seq("-source", "11", "-target", "11", "-Xlint")
 
 initialize := {
   val _ = initialize.value
-  if (sys.props("java.specification.version") != "1.8")
+  if (sys.props("java.specification.version") != "11")
     sys.error(s"Java 8 is required for this project. Running: ${sys.props("java.specification.version")}")
 }
 
