@@ -86,12 +86,14 @@ paradoxMaterialTheme in Compile := {
 
 // Publish settings
 publishTo in ThisBuild := {
-  val nexus = "https://oss.sonatype.org/"
+  val nexus = "https://nexus.groupl.es/"
   if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
+    Some("snapshots" at nexus + "repository/maven-snapshots/")
   else
-    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    Some("releases" at nexus + "repository/maven-releases/")
 }
+
+credentials in ThisBuild += Credentials(Path.userHome / ".ivy2" / ".meweCredentials")
 
 publishMavenStyle := true
 
